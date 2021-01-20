@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, ListGroup } from 'react-bootstrap';
-//import {Grid, Card, Typography} from '@material-ui/core';
 
 const ProfileCard = ({user})=> {
     return (

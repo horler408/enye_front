@@ -4,12 +4,12 @@ import ProfileCard from './ProfileCard';
 import Pagination from './Pagination';
 import SearchForm from './SearchForm';
 import FilterForm from './FilterForm';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 const Profiles = () => {
     const[users, setUsers] = useState([])
     const[filter, setFilter] = useState({})
-    const [search, setSearch] = useState("")
+    //const [search, setSearch] = useState("")
     const[loading, setLoading] = useState(false)
     const[page, setPage] = useState(1);
     const[usersPerPage] = useState(20)
@@ -45,9 +45,10 @@ const Profiles = () => {
         setFilter({[e.target.name]: e.target.value})
     }
 
-    const handleSearch = (e) => {
-        
-    }
+    // const handleSearch = (e) => {
+    //     let keyword = e.target.value;
+    //     setSearch({search : keyword})
+    // }
 
     return (
         <div className="bg-light">
@@ -57,16 +58,21 @@ const Profiles = () => {
                 totalUsers={users.length}
                 paginate={paginate}
             />
-            <SearchForm value={search} onSearch={handleSearch} />
+            <SearchForm />
             <FilterForm value={filter} onfilter={handleFilter} />
             <Container className="mt-5 d-flex justify-content-between flex-wrap">
-
+                {/* {currentUsers.filter(user =>{
+                    if(search === ""){
+                        return user
+                    }
+                    else if(user.FirstName.toLowerCase().includes(search.toLowerCase())){
+                        return user
+                    }
+                }).map((user, i) => (
+                    <ProfileCard key={i} user={user} />
+                ))} */}
                 {currentUsers.map((user, i) => (
-                    <Row key={i}>
-                        <Col md={6}>
-                            <ProfileCard user={user} />
-                        </Col>
-                    </Row>
+                    <ProfileCard key={i} user={user} />
                 ))}
             </Container>
             <Pagination 
