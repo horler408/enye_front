@@ -34,21 +34,6 @@ const Profiles = () => {
         getUsers();
     }, [baseURL])
 
-    const filterData = (value) => {
-        const lowercasedValue = value.toLowerCase().trim();
-        if (lowercasedValue === "") {
-          return setUsers(users);
-        }
-        else {
-          const filteredData = users.filter((record) => {
-            return Object.keys(record).some((key) =>
-              record[key].toString().toLowerCase().includes(lowercasedValue)
-            );
-          });
-          setUsers(filteredData);
-        }
-      };
-
     
     const indexOfLastUser = page * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
@@ -61,8 +46,7 @@ const Profiles = () => {
     }
 
     const handleSearch = (e) => {
-        setSearch(e.target.value);
-        filterData(e.target.value);
+        
     }
 
     return (
@@ -75,7 +59,7 @@ const Profiles = () => {
             />
             <SearchForm value={search} onSearch={handleSearch} />
             <FilterForm value={filter} onfilter={handleFilter} />
-            <Container className="mt-5 d-flex flex-wrap">
+            <Container className="mt-5 d-flex justify-content-between flex-wrap">
 
                 {currentUsers.map((user, i) => (
                     <Row key={i}>

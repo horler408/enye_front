@@ -4,7 +4,7 @@ import { Card, ListGroup } from 'react-bootstrap';
 
 const ProfileCard = ({user})=> {
     return (
-        <Card className="m-4" style={{ width: '25rem'}}>
+        <Card className="m-2" style={{ width: '25rem'}}>
             <Card.Header>{`${user.FirstName} ${user.LastName}`}</Card.Header>
             <Card.Body>
                 <div>
